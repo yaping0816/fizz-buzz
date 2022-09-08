@@ -1,21 +1,20 @@
 package com.tlglearning;
 
-public class FizzBuzz {
+import java.util.EnumSet;
+import java.util.Set;
 
-  public static final String FIZZ_RESULT = "fizz";
-  public static final String BUZZ_RESULT = "buzz";
+public enum FizzBuzz {
 
-  public static String valueOf(int num) {
-    String result = "";
-    if(num % 3 == 0) {
-      result = FIZZ_RESULT;
+  FIZZ, BUZZ;
+
+  public static Set<FizzBuzz> valueOf(int num) {
+    Set<FizzBuzz> result = EnumSet.noneOf(
+        FizzBuzz.class); //when we need to pass a class as an argument, we use .class after the class name, every calss hava a cclass field
+    if (num % 3 == 0) {
+      result.add(FIZZ);
     }
-    if(num % 5 == 0) {
-      result += BUZZ_RESULT;
-    }
-    if(result.isEmpty()){
-//      result += num;
-      result = String.valueOf(num); //reference to a string version of num, this is a static method of String class
+    if (num % 5 == 0) {
+      result.add(BUZZ);
     }
 
     return result;
